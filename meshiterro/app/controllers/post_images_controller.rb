@@ -30,6 +30,7 @@ def destroy
 end
 
 
+
 private
 
 def post_image_params
