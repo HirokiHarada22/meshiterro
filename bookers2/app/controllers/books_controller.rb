@@ -55,12 +55,10 @@ class BooksController < ApplicationController
   if @book.save
     # ＠を追加
     redirect_to book_path(@book.id), notice: 'Book was successfully created.'
-  else
+     else
     @books = Book.all
-    # 追加
     @user = current_user
-    # 追加
-    render :new
+    render  'users/show'
   end
   end
 
