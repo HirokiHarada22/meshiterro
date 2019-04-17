@@ -1,0 +1,33 @@
+
+
+<div class='container'>
+<div class='row'>
+
+
+<%= render 'users/list' %>
+
+
+<div class='col-xs-9'>
+<table class="col-xs-12">
+<thead>
+	<tr>
+	 <th>Title</th>
+	 <th>Opinion</th>
+	 <th colspan="2"></th>
+	</tr>
+</thead>
+
+<tbody>
+	<tr>
+	 <th><%= @book.title %></t>
+	 <th><%= @book.body %></th>
+	<% if @book.user == current_user %>
+	 <th><%= link_to 'Edit', edit_book_path(@book.id), class: "edit_book_#{@book.id}" %></th>
+	 <th><%= link_to "Delete", book_path(@book.id), method: :delete, data: {confirm:'Are you sure?'}, class: "destroy_book_#{@book.id}" %></th>
+	<% end %>
+	</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>

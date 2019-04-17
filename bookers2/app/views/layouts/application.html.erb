@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <title>Bookers2</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+<header>
+<section class="header-title-box">
+<h2 class="header-title">Bookers</h2>
+</section>
+
+
+<% if user_signed_in? %>
+                  <li class="header-list">
+                  <p class="list-title"><span class="glyphicon glyphicon-log-out logout"></span> <%= link_to "logout", destroy_user_session_path, method: :delete, class: "logout" %></p>
+                  <li class="header-list">
+                  <p class="list-title"><span class="glyphicon glyphicon-book books"></span> <%= link_to 'books', books_path, class: "books" %></p>
+                </li>
+                  <li class="header-list">
+                  <p class="list-title"><span class="glyphicon glyphicon-user users"> <%= link_to 'Users', users_path(current_user.id), class: "users" %></p>
+                </li>
+                <!-- ↑あとでパス変更（済み） -->
+                  <li class="header-list">
+                  <p class="list-title"><span class="glyphicon glyphicon-home home"></span> <%= link_to 'Home', user_path(current_user.id), class: "home" %></p>
+                </li>
+                </li>
+              <% else %>
+                <li class="header-list">
+                  <p class="list-title"><span class="glyphicon glyphicon-log-in sign_in"></span> <%= link_to "login", new_user_session_path, class: "sign_in" %></p>
+                </li>
+                <li class="header-list">
+                  <p class="list-title"><span class="glyphicon glyphicon-edit sign_up"> </span> <%= link_to "sing up", new_user_registration_path, class: "sign_up" %></p>
+                </li>
+                <li class="header-list">
+                  <p class="list-title"><span class="glyphicon glyphicon-link about"></span> <%= link_to "About", home_about_path, class: "about" %></p>
+                  <!-- ↑パスはあとで変更（済み） -->
+                </li>
+                <li class="header-list">
+                 <p class="list-title"><span class="glyphicon glyphicon-home home"></span> <%= link_to "Home", root_path, class: "home" %></p>
+                  <!-- ↑パスはあとで変更 （済み）-->
+                </li>
+               
+              <% end %>
+</header>
+
+
+    <%= yield %>
+  </body>
+</html>

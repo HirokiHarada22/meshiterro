@@ -1,0 +1,58 @@
+
+<% flash.each do |key, value| %>
+    <%= content_tag(:div, value, class: "#{key}") %>
+    <% end %>
+<body>
+<div class='container'>
+<div class='row'>
+<!-- サイド -->
+
+<%= render 'users/list', users: @users %>
+
+<!-- サイド -->
+<div class='col-xs-9'>
+<% if @book.errors.any? %>
+	<h2><%= @book.errors.count %>error</h2>
+	<%= @book.errors.full_messages.each do |message| %>
+	<%= message %>
+	<% end %>
+<% end %>
+
+<h2>Books</h2>
+
+
+<table class="col-xs-12">
+	<thead>
+    <tr> 
+      <th>Title</th>
+      <th>Opinion</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+
+<tbody>
+
+<% @books.each do |book| %>
+	<tr>
+		<th><%= book.title %></th>
+
+		<th><%= book.body %></th>
+		<th><%= link_to 'Show', book_path(book.id) %></th>
+		<th>
+		<% if @book.user == current_user %>
+		<%= link_to 'Edit', edit_book_path(book.id), class: "edit_book_#{book.id}" %>
+		<% end %>
+		</th>
+	</tr>
+<% end %>
+</tbody>
+
+</table>
+
+
+</div>
+</div>
+</div>
+</body>
+
