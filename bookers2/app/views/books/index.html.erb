@@ -3,7 +3,7 @@
 	<div class='row'>
 
 
-	<h2 class="books-title">Books</h2>
+
 
 	<% if @book.errors.any? %>
 	<h2><%= @book.errors.count %>error</h2>
@@ -15,6 +15,7 @@
 	<%= render 'users/list', users: @users %>
 
 	<div class='col-xs-9'>
+		<h2>Books</h2>
 		<table class="col-xs-12">
 			<thead>
 				<tr>

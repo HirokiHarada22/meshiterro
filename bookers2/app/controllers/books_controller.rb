@@ -29,10 +29,15 @@ class BooksController < ApplicationController
 
   def update
     @book = Book.find(params[:id])
-  if @book.update(book_params)
-    redirect_to book_path
+  # if @book.update(book_params)
+  #   redirect_to book_path
+  # else
+  #   render 'edit'
+  # end
+   if @book.update(book_params)
+   redirect_to book_path(@book.id), notice: 'Book was successfully created.'
   else
-    render 'edit'
+    render :edit
   end
   end
 
@@ -40,12 +45,22 @@ class BooksController < ApplicationController
   def create
   	@book = Book.new(book_params)
   	@book.user_id = current_user.id
+  # if @book.save
+  # 	redirect_to book_path(@book.id)
+  # else
+  #   @books = Book.all
+  #   @user = current_user
+  #   render  'users/show'
+  # end
   if @book.save
-  	redirect_to book_path(@book.id)
+    # ＠を追加
+    redirect_to book_path(@book.id), notice: 'Book was successfully created.'
   else
     @books = Book.all
+    # 追加
     @user = current_user
-    render  'users/show'
+    # 追加
+    render :new
   end
   end
 
