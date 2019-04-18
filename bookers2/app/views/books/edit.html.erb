@@ -12,7 +12,7 @@
 	<% end %>
 <% end %>
 
-<h2 class="edit-title">Editing Book</h2>
+<h2 class="edit-title" style='color: green;'><span class="glyphicon glyphicon-wrench" aria-hidden="true" style='color: green;'></span> Editing Book</h2>
 <%= form_for(@book) do |f| %>
 
 
@@ -24,7 +24,7 @@
 	<%= f.submit 'Update Book', class: "btn btn-primary col-xs-12" %>
 </div>
 
-<h4><%= link_to "Back", book_path(@book.id), class: "back" %></h4>
+<h4><%= link_to "Show", book_path(@book.id), class: "book_#{@book.id}" %> | <%= link_to "Back", books_path, class: "back" %></h4>
 <% end %>
 
 </div>

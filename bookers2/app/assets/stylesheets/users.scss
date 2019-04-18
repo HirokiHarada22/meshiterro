@@ -5,18 +5,13 @@
 
 tr{
 	display: table-row;
+	border-bottom: 1px solid #BBBBBB;
 }
 th{
-	border-bottom: 1px solid #BBBBBB;
 	padding: 15px;
 }
-td{
-	boder-bottom: 1px solid black;
+.test{
 	padding: 15px;
-}
-
-.profile-list{
-	margin: 10px;
 }
 
 div {

@@ -2,42 +2,40 @@
 <div class='container'>
 	<div class='row'>
 
-
-
-
 	<% if @book.errors.any? %>
 	<h2><%= @book.errors.count %>error</h2>
-	<% @book.errors.full_messages.each do |message| %>
-	<%= message %>
+		<% @book.errors.full_messages.each do |message| %>
+			<%= message %>
+		<% end %>
 	<% end %>
-<% end %>
 
 	<%= render 'users/list', users: @users %>
 
-	<div class='col-xs-9'>
-		<h2>Books</h2>
-		<table class="col-xs-12">
+		<div class='col-xs-9'>
+		<h2 style='color: green;'><span class="glyphicon glyphicon-book" aria-hidden="true" style='color: green;'></span> Books</h2>
+		<table class="table table-space col-xs-12">
 			<thead>
 				<tr>
+					<th>User</th>
 					<th>Title</th>
-					<th>Body</th>
 					<th>Opinion</th>
       				<th colspan="3"></th>
 				</tr>
 			</thead>
 			<tbody>
 
-		<% @books.each do |books| %>
-			<tr>
-				<th><%= attachment_image_tag books.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg", class: "img-circle pull-left profile-thume" %></th>
-				<th><%= books.title %></th>
-
-				<th><%= books.body %></th>
-				<th><%= link_to 'Show', book_path(books.id), class: "book_#{books.id}" %></th>
-			</tr>
-		<% end %>
+			<% @books.each do |books| %>
+				<tr>
+					<td class="test"><%= link_to user_path(books.user.id) do %>
+						<%= attachment_image_tag books.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg", class: "img-circle pull-left profile-thumb user_image" %>
+						<% end %></td>
+					<td><%= link_to books.title, book_path(books.id), class: "book_#{books.id}" %></td>
+					<td><%= books.body %></td>
+					<td></td>
+				</tr>
+			<% end %>
 			</tbody>
 		</table>
-	</div>
+		</div>
 	</div>
 </div>

@@ -1,37 +1,45 @@
 
 
 <div class='container'>
-<div class='row'>
+	<div class='row'>
 
 
-<%= render 'users/list' %>
+		<%= render 'users/list' %>
 
 
-<div class='col-xs-9'>
-<p id="notice">
-	<%= notice %>
-</p>
-<h2>Book detail</h2>
-<table class="col-xs-12">
-<thead>
-	<tr>
-	 <th>Title</th>
-	 <th>Opinion</th>
-	 <th colspan="2"></th>
-	</tr>
-</thead>
+		<div class='col-xs-9'>
+			<p id="notice">
+				<%= notice %>
+			</p>
+			<h2 style='color: green;'><span class="glyphicon glyphicon-book" aria-hidden="true" style='color: green;'></span> Book detail</h2>
+			<div class="table table-space col-xs-12">
+				<table style='width: 100%;'>
+					<thead>
+						<tr>
+						 <th class="test">User</th>
+						 <th>Title</th>
+						 <th>Opinion</th>
+						 <th></th>
+						 <th colspan="4"></th>
+						</tr>
+					</thead>
 
-<tbody>
-	<tr>
-	 <th><%= @book.title %></t>
-	 <th><%= @book.body %></th>
-	<% if @book.user == current_user %>
-	 <th><%= link_to 'Edit', edit_book_path(@book.id), class: "edit_book_#{@book.id}" %></th>
-	 <th><%= link_to "Delete", book_path(@book.id), method: :delete, data: {confirm:'Are you sure?'}, class: "destroy_book_#{@book.id}" %></th>
-	<% end %>
-	</tr>
-</tbody>
-</table>
-</div>
-</div>
+				    <tbody>
+						<tr>
+						 <td class="test"><%= link_to user_path(@book.user.id) do %>
+								<%= attachment_image_tag @book.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg", class: "img-circle pull-left profile-thumb user_image" %>
+								<% end %>
+						 </td>
+						 <td><%= link_to @book.title, book_path(@book.id), class: "book_#{@book.id}" %></td>
+						 <td><%= @book.body %></td>
+						<% if @book.user == current_user %>
+						 <td><%= link_to 'Edit', edit_book_path(@book.id), class: "label label-success edit_book_#{@book.id}" %></td>
+						 <td><%= link_to "Delete", book_path(@book.id), method: :delete, data: {confirm:'Are you sure?'}, class: "label label-default destroy_book_#{@book.id}" %></td>
+						<% end %>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
 </div>
