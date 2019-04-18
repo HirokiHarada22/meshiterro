@@ -38,7 +38,7 @@
 		<th><%= book.title %></th>
 
 		<th><%= book.body %></th>
-		<th><%= link_to 'Show', book_path(book.id) %></th>
+		<th><%= link_to 'Show', book_path(book.id), class: "user_#{book.id}" %></th>
 		<th>
 		<% if @book.user == current_user %>
 		<%= link_to 'Edit', edit_book_path(book.id), class: "edit_book_#{book.id}" %>

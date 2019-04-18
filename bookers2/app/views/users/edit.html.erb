@@ -16,16 +16,16 @@
 	<h2><%= @user.errors.count %>error</h2>
 <% end %>
 <div class="field">
-<%= attachment_image_tag @user, :profile_image, :fill, 60, 60, class:"img-circle pull-left profile-thumb", fallback: "no_image.jpg" %>
+<%= attachment_image_tag @user, :profile_image, :fill, 60, 60, class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg" %>
  <%= f.attachment_field :profile_image, class: "user_image", placeholder: "プロフィール画像", class: "user-edit-form" %>
 </div>
 
 <div class="field">
  <%= f.label :name, class: "name" %>
- <%= f.text_field :name, class: 'form-control' %>
+ <%= f.text_field :name, class: 'form-control name' %>
 </div>
 <div class="field">
- <%= f.text_area :profile, class: 'form-control' %>
+ <%= f.text_area :profile, class: 'form-control introduction' %>
 </div>
 <%= f.submit "Update User" %>
 <% end %>
